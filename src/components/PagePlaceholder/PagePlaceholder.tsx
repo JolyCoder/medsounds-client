@@ -3,8 +3,7 @@ import cn from "classnames";
 
 import styles from "./PagePlaceholder.module.css";
 import { CurlyLine } from "../../components/CurlyLine/CurlyLine";
-import { Button } from "../../components/Button/Button";
-import { ArrowRight } from "../../icons/ArrowRight";
+import { SuggestButton } from "../SuggestButton/SuggestButton";
 
 export const PagePlaceholder: FC = () => {
   return (
@@ -21,7 +20,7 @@ export const PagePlaceholder: FC = () => {
         </span>
       </div>
 
-      <Button title="Предложить" icon={<ArrowRight />} />
+      <SuggestButton />
     </div>
   );
 };
