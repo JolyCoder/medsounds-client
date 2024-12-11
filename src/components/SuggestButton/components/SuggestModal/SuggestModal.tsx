@@ -1,4 +1,4 @@
-import { FC, useState, useRef, useEffect } from "react";
+import { FC, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import styles from "./SuggestModal.module.css";
@@ -86,6 +86,7 @@ export const SuggestModal: FC<
             <input
               type="email"
               className={styles.input}
+              value={email}
               onChange={(event) => onEmailChange(event.target.value)}
               placeholder="Введите вашу электронную почту"
             />
@@ -97,6 +98,7 @@ export const SuggestModal: FC<
 
             <textarea
               className={styles.input}
+              value={content}
               onChange={(event) => onContentChange(event.target.value)}
               placeholder="Введите текст вашей новости"
             />
