@@ -4,6 +4,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { PATHS } from "./consts";
 import "./index.css";
 import App from "./App.tsx";
+import { Home } from "./pages/Home/Home.tsx";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: PATHS.HOME,
-        element: null,
+        element: <Home />,
       },
       {
         path: PATHS.NEWS,

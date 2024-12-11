@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 39px;
+
+  width: 100%;
+  padding: 60px 87px;
+}
+
+.comeSoonContainer {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  flex-grow: 1;
+  border-radius: 20px;
+  background-color: #d1d1e9;
+
+  padding: 0px 19%;
+}
+
+.comeSoonText {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 72px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.comeSoonLowerText {
+  margin-top: 19px;
+}

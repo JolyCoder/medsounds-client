@@ -14,30 +14,32 @@ export const Header: FC = () => {
         <img src={logo} />
       </div>
 
-      <div className={cn(styles.linkContainer, styles.block)}>
-        <NavLink to={PATHS.HOME} className={styles.navLink}>
-          {({ isActive }) => (
-            <span className={cn(styles.link, isActive && styles.linkActive)}>
-              Главная
-            </span>
-          )}
-        </NavLink>
+      <div className={styles.block}>
+        <div className={styles.linkContainer}>
+          <NavLink to={PATHS.HOME} className={styles.navLink}>
+            {({ isActive }) => (
+              <span className={cn(styles.link, isActive && styles.linkActive)}>
+                Главная
+              </span>
+            )}
+          </NavLink>
 
-        <NavLink to={PATHS.NEWS} className={styles.navLink}>
-          {({ isActive }) => (
-            <span className={cn(styles.link, isActive && styles.linkActive)}>
-              Новости
-            </span>
-          )}
-        </NavLink>
+          <NavLink to={PATHS.NEWS} className={styles.navLink}>
+            {({ isActive }) => (
+              <span className={cn(styles.link, isActive && styles.linkActive)}>
+                Новости
+              </span>
+            )}
+          </NavLink>
 
-        <NavLink to={PATHS.ABOUT} className={styles.navLink}>
-          {({ isActive }) => (
-            <span className={cn(styles.link, isActive && styles.linkActive)}>
-              О нас
-            </span>
-          )}
-        </NavLink>
+          <NavLink to={PATHS.ABOUT} className={styles.navLink}>
+            {({ isActive }) => (
+              <span className={cn(styles.link, isActive && styles.linkActive)}>
+                О нас
+              </span>
+            )}
+          </NavLink>
+        </div>
       </div>
 
       <div className={styles.block} />
