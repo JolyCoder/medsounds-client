@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 70px;
+
+  padding: 7px 0px;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  flex: 1;
+}
+
+.linkContainer {
+  gap: 32px;
+}
+
+.link {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  color: #6b7280;
+
+  text-decoration: none;
+}
+
+.linkActive {
+  color: #e45858;
+}
+
+.navLink {
+  text-decoration: none;
+}

@@ -22,11 +22,11 @@ const router = createBrowserRouter([
         path: PATHS.ABOUT,
         element: null,
       },
-      {
-        path: "*",
-        element: <Navigate to={PATHS.HOME} />,
-      },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" />,
   },
 ]);
 
