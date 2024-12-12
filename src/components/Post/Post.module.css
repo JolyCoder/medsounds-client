@@ -9,6 +9,8 @@
   background-position: center;
 
   border-radius: 20px;
+
+  cursor: pointer;
 }
 
 .contentContainer {

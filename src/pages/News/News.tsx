@@ -8,7 +8,7 @@ import styles from "./News.module.css";
 import { TagSelector } from "../../components/TagSelector/TagSelector";
 import { SuggestButton } from "../../components/SuggestButton/SuggestButton";
 
-const POST_TYPES = ["Записи академии", "Предложенные"];
+const POST_TYPES = { ACADEMY: "Записи академии", SUGGESTED: "Предложенные" };
 const POST_WODRDS = ["новость", "новости", "новостей"];
 
 const getPostsCountLabel = (count: number) => {
@@ -36,7 +36,7 @@ export const News: FC = () => {
   const { data } = useQuery(...postsApi.getPosts());
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedType, setSelectedType] = useState<string>(POST_TYPES[0]);
+  const [selectedType, setSelectedType] = useState<string>(POST_TYPES.ACADEMY);
 
   const tags = useMemo(() => {
     if (!data) {
@@ -69,14 +69,22 @@ export const News: FC = () => {
       return [];
     }
 
-    if (!selectedTags.length) {
-      return posts;
-    }
+    return posts
+      .filter(({ tags }) => {
+        if (!selectedTags.length) {
+          return true;
+        }
 
-    return posts.filter(({ tags }) => {
-      return tags.some((tag) => selectedTags.includes(tag));
-    });
-  }, [data?.data.posts, selectedTags]);
+        return tags.some((tag) => selectedTags.includes(tag));
+      })
+      .filter((post) => {
+        if (selectedType === POST_TYPES.SUGGESTED) {
+          return post.suggested;
+        }
+
+        return true;
+      });
+  }, [data?.data.posts, selectedTags, selectedType]);
 
   const handleClickOnPost = (postId: string) => postId;
 
@@ -107,7 +115,7 @@ export const News: FC = () => {
             </span>
 
             <TagSelector
-              tags={POST_TYPES}
+              tags={[POST_TYPES.ACADEMY, POST_TYPES.SUGGESTED]}
               value={[selectedType]}
               onChange={setSelectedType}
             />

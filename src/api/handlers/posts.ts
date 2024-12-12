@@ -10,6 +10,7 @@ type Post = {
   image: string; // URL
   likes: number;
   liked: boolean;
+  suggested: boolean;
 };
 
 type GetPostsResponse = {
