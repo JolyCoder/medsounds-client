@@ -6,7 +6,7 @@ import { Button } from "../Button/Button";
 type TagSelectorProps = {
   tags: string[];
 
-  value: string;
+  value: string[];
   onChange: (value: string) => void;
 
   selectedColor?: string;
@@ -26,8 +26,10 @@ export const TagSelector: FC<TagSelectorProps> = ({
         <Button
           title={tag}
           onClick={() => onChange(tag)}
-          backgroundColor={value === tag ? selectedColor : nonSelectedColor}
-          textColor={value === tag ? "white" : "black"}
+          backgroundColor={
+            value.includes(tag) ? selectedColor : nonSelectedColor
+          }
+          textColor={value.includes(tag) ? "white" : "black"}
         />
       ))}
     </div>

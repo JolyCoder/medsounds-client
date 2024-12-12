@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FC } from "react";
+import { useMemo, useState, type FC } from "react";
 import { useQuery } from "react-query";
 import { postsApi } from "../../api";
 import { Post } from "../../components/Post/Post";
@@ -35,7 +35,7 @@ const getPostsCountLabel = (count: number) => {
 export const News: FC = () => {
   const { data } = useQuery(...postsApi.getPosts());
 
-  const [selectedTag, setSelectedTag] = useState<string>("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedType, setSelectedType] = useState<string>(POST_TYPES[0]);
 
   const tags = useMemo(() => {
@@ -52,13 +52,15 @@ export const News: FC = () => {
     return Array.from(tagsSet).filter(Boolean);
   }, [data]);
 
-  useEffect(() => {
-    if (selectedTag || !tags.length) {
+  const handleTagClick = (tag: string) => {
+    if (selectedTags.includes(tag)) {
+      setSelectedTags((prev) => prev.filter((prevTag) => prevTag !== tag));
+
       return;
     }
 
-    setSelectedTag(tags[0]);
-  }, [selectedTag, tags]);
+    setSelectedTags((prev) => prev.concat([tag]));
+  };
 
   const filteredPosts = useMemo(() => {
     const posts = data?.data.posts;
@@ -67,8 +69,14 @@ export const News: FC = () => {
       return [];
     }
 
-    return posts.filter(({ tags }) => tags.includes(selectedTag));
-  }, [data?.data.posts, selectedTag]);
+    if (!selectedTags.length) {
+      return posts;
+    }
+
+    return posts.filter(({ tags }) => {
+      return tags.some((tag) => selectedTags.includes(tag));
+    });
+  }, [data?.data.posts, selectedTags]);
 
   const handleClickOnPost = (postId: string) => postId;
 
@@ -100,7 +108,7 @@ export const News: FC = () => {
 
             <TagSelector
               tags={POST_TYPES}
-              value={selectedType}
+              value={[selectedType]}
               onChange={setSelectedType}
             />
           </div>
@@ -110,8 +118,8 @@ export const News: FC = () => {
 
             <TagSelector
               tags={tags}
-              value={selectedTag}
-              onChange={setSelectedTag}
+              value={selectedTags}
+              onChange={handleTagClick}
             />
           </div>
 
