@@ -25,8 +25,9 @@ export const TagSelector: FC<TagSelectorProps> = ({
       {tags.map((tag) => (
         <Button
           title={tag}
-          onClick={() => onChange(value)}
+          onClick={() => onChange(tag)}
           backgroundColor={value === tag ? selectedColor : nonSelectedColor}
+          textColor={value === tag ? "white" : "black"}
         />
       ))}
     </div>

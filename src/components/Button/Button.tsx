@@ -6,8 +6,10 @@ export type ButtonProps = {
   title?: string;
   icon?: ReactNode;
 
-  onClick?: () => void;
   backgroundColor?: string;
+  textColor?: string;
+
+  onClick?: () => void;
 };
 
 const getPaddings = (hasTitle: boolean, hasIcon: boolean) => {
@@ -27,6 +29,7 @@ export const Button: FC<ButtonProps> = ({
   icon,
   onClick,
   backgroundColor = "#6246EA",
+  textColor = "white",
 }) => {
   const handleClick = () => {
     if (onClick) {
@@ -44,7 +47,9 @@ export const Button: FC<ButtonProps> = ({
       onClick={handleClick}
       className={styles.container}
     >
-      <span className={styles.title}>{title}</span>
+      <span className={styles.title} style={{ color: textColor }}>
+        {title}
+      </span>
 
       {icon}
     </div>
