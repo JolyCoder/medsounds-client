@@ -6,6 +6,10 @@ import "./index.css";
 import App from "./App.tsx";
 import { Home } from "./pages/Home/Home.tsx";
 import { About } from "./pages/About/About.tsx";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { News } from "./pages/News/News.tsx";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -18,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: PATHS.NEWS,
-        element: null,
+        element: <News />,
       },
       {
         path: PATHS.ABOUT,
@@ -34,6 +38,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </StrictMode>
 );

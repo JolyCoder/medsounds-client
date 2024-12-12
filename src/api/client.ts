@@ -1,12 +1,15 @@
 import { getBrowserIdent } from "../utils/createBrowserIdent";
 
 const BROWSER_IDENT_HEADER = "browser-ident";
+const API_BASENAME = "/api";
 
 class APIClient {
   private browserIdent: string;
+  private basename: string;
 
   constructor() {
     this.browserIdent = getBrowserIdent();
+    this.basename = API_BASENAME;
   }
 
   async makeRequest<T>(input: RequestInfo | URL, init?: RequestInit) {
@@ -35,23 +38,31 @@ class APIClient {
       [BROWSER_IDENT_HEADER]: this.browserIdent,
     };
 
-    return init;
+    return safeInit;
   }
 
-  private prepareFetchParams(input: RequestInfo | URL, init?: RequestInit) {
+  private prepareInput(input: RequestInfo | URL) {
     if (input instanceof URL) {
-      return { input, init: this.prepareInit(init) };
+      const inputCopy = Object.assign({}, input);
+      inputCopy.pathname = this.basename + inputCopy.pathname;
+
+      return inputCopy;
     }
 
     if (typeof input === "string") {
-      return { input, init: this.prepareInit(init) };
+      return this.basename + input;
     }
 
     const inputCopy = Object.assign({}, input);
 
     inputCopy.headers.set(BROWSER_IDENT_HEADER, this.browserIdent);
+    inputCopy.url.replace(inputCopy.url, this.basename + API_BASENAME); // FIXME: dirty hack
 
-    return { input: inputCopy, init };
+    return input;
+  }
+
+  private prepareFetchParams(input: RequestInfo | URL, init?: RequestInit) {
+    return { input: this.prepareInput(input), init: this.prepareInit(init) };
   }
 }
 

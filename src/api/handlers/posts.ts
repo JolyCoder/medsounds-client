@@ -1,4 +1,5 @@
 import { apiClient } from "../client";
+import { createHandler } from "../createHandler";
 
 type GetPostsResponse = {
   posts: [
@@ -15,7 +16,9 @@ type GetPostsResponse = {
   ];
 };
 
-const getPosts = () => apiClient.makeRequest<GetPostsResponse>("/posts");
+function getPosts() {
+  return apiClient.makeRequest<GetPostsResponse>("/posts");
+}
 
 type ToogleLikeOnPostInput = {
   postId: string;
@@ -23,12 +26,13 @@ type ToogleLikeOnPostInput = {
 
 type ToggleLikeOnPostResponse = string;
 
-const toggleLikeOnPost = ({ postId }: ToogleLikeOnPostInput) =>
-  apiClient.makeRequest<ToggleLikeOnPostResponse>(
+function toggleLikeOnPost({ postId }: ToogleLikeOnPostInput) {
+  return apiClient.makeRequest<ToggleLikeOnPostResponse>(
     `/posts/${postId}/like-unlike`
   );
+}
 
 export const postsApi = {
-  getPosts,
-  toggleLikeOnPost,
+  getPosts: createHandler(getPosts),
+  toggleLikeOnPost: createHandler(toggleLikeOnPost),
 };

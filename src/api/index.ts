@@ -1,3 +1,3 @@
-import { postsApi } from "./domains/posts";
+import { postsApi } from "./handlers/posts";
 
 export { postsApi };
