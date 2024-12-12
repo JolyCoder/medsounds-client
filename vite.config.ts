@@ -9,6 +9,9 @@ export default defineConfig({
       "/api": {
         target: "http://80.242.57.82/",
       },
+      "/root": {
+        target: "http://80.242.57.82/",
+      },
     },
   },
 });

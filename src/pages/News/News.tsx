@@ -1,6 +1,7 @@
 import { useMemo, useState, type FC } from "react";
 import { useQuery } from "react-query";
 import { postsApi } from "../../api";
+import { Post } from "../../components/Post/Post";
 
 export const News: FC = () => {
   const { data } = useQuery(...postsApi.getPosts);
@@ -21,5 +22,16 @@ export const News: FC = () => {
     return Array.from(tagsSet).filter(Boolean);
   }, [data]);
 
-  return null;
+  return (
+    <>
+      {data?.data.posts.map((post) => (
+        <Post.Extended
+          title={post.title}
+          imageURL={post.image}
+          tags={post.tags}
+          onClick={() => {}}
+        />
+      ))}
+    </>
+  );
 };
