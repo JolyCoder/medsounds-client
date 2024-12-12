@@ -11,7 +11,7 @@ export const Header: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.block}>
-        <img src={logo} />
+        <img className={styles.logo} src={logo} />
       </div>
 
       <div className={styles.block}>
