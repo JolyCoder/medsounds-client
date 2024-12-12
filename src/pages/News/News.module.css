@@ -1,0 +1,101 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 41px 13% 35px 13%;
+
+  width: 100%;
+
+  overflow: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 27px;
+
+  width: 1045px;
+}
+
+.digest {
+  display: flex;
+  flex-direction: row;
+
+  gap: 15px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  margin-top: 35px;
+  width: 100%;
+}
+
+.typeFilter {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  width: 100%;
+}
+
+.postsCount {
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 46.5px;
+  text-align: left;
+
+  color: #272343;
+}
+
+.tagsFilter {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 31px;
+
+  width: 100%;
+}
+
+.tagsFilterLabel {
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 46.5px;
+  text-align: left;
+
+  color: #2b2c34;
+}
+
+.suggestButtonContainer {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 100%;
+}
+
+.postsContainer {
+  display: flex;
+  flex-direction: row;
+
+  gap: 32px;
+
+  flex-wrap: wrap;
+
+  width: 100%;
+}

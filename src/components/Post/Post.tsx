@@ -1,7 +1,5 @@
 import type { FC } from "react";
 
-import cn from "classnames";
-
 import styles from "./Post.module.css";
 import { Button } from "../Button/Button";
 import { ArrowRight } from "../../icons/ArrowRight";
@@ -20,7 +18,9 @@ const DefaultPost: FC<DefaultPostProps> = ({ title, imageURL, onClick }) => {
       style={{ backgroundImage: `url("${imageURL}")` }}
       className={styles.container}
     >
-      <span className={styles.title}>{title}</span>
+      <div className={styles.contentContainer}>
+        <span className={styles.title}>{title}</span>
+      </div>
     </div>
   );
 };
@@ -43,7 +43,7 @@ const ExtendedPost: FC<ExtendedPostProps> = ({
     <div
       onClick={onClick}
       style={{ backgroundImage: `url("${imageURL}")` }}
-      className={cn(styles.container, styles.extendedMode)}
+      className={styles.extendedMode}
     >
       <div className={styles.header}>
         <span className={styles.headerText}>ПОСЛЕДНЯЯ НОВОСТЬ</span>
