@@ -5,6 +5,7 @@ import { PATHS } from "./consts";
 import "./index.css";
 import App from "./App.tsx";
 import { Home } from "./pages/Home/Home.tsx";
+import { About } from "./pages/About/About.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: PATHS.ABOUT,
-        element: null,
+        element: <About />,
       },
     ],
   },
