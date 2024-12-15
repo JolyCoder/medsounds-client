@@ -4,8 +4,11 @@ import { postsApi } from "../../api";
 
 import styles from "./BestPost.module.css";
 import { Post } from "../Post/Post";
+import { useNavigate } from "react-router";
 
 export const BestPost: FC = () => {
+  const navigate = useNavigate();
+
   const { data } = useQuery(...postsApi.getBestPost());
 
   const post = data?.data;
@@ -13,6 +16,10 @@ export const BestPost: FC = () => {
   if (!post) {
     return null;
   }
+
+  const handleClick = () => {
+    navigate(`/news/${post.post_id}`);
+  };
 
   return (
     <div className={styles.container}>
@@ -24,7 +31,7 @@ export const BestPost: FC = () => {
         </span>
       </div>
 
-      <Post title={post.title} imageURL={post.image} onClick={() => {}} />
+      <Post title={post.title} imageURL={post.image} onClick={handleClick} />
     </div>
   );
 };

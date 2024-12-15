@@ -2,8 +2,8 @@ import { apiClient } from "../client";
 import { createHandler } from "../createHandler";
 
 type Post = {
-  post_id: string;
-  created_at: string;
+  post_id: number;
+  created_at: number;
   title: string;
   content: string;
   tags: string[];

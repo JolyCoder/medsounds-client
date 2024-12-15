@@ -7,6 +7,7 @@ import { BestPost } from "../../components/BestPost/BestPost";
 import styles from "./News.module.css";
 import { TagSelector } from "../../components/TagSelector/TagSelector";
 import { SuggestButton } from "../../components/SuggestButton/SuggestButton";
+import { useNavigate } from "react-router";
 
 const POST_TYPES = { ACADEMY: "Записи академии", SUGGESTED: "Предложенные" };
 const POST_WODRDS = ["новость", "новости", "новостей"];
@@ -33,6 +34,8 @@ const getPostsCountLabel = (count: number) => {
 };
 
 export const News: FC = () => {
+  const navigate = useNavigate();
+
   const { data } = useQuery(...postsApi.getPosts());
 
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -86,7 +89,7 @@ export const News: FC = () => {
       });
   }, [data?.data.posts, selectedTags, selectedType]);
 
-  const handleClickOnPost = (postId: string) => postId;
+  const handleClickOnPost = (postId: number) => navigate(`/news/${postId}`);
 
   const lastPost = data?.data.posts[0];
 
