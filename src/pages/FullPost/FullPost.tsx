@@ -1,10 +1,13 @@
-import { FC, useMemo } from "react";
+import { FC, useMemo, lazy } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router";
 import { postsApi } from "../../api";
 
 import styles from "./FullPost.module.css";
 import { Calendar } from "../../icons/Calendar";
+import rehypeRaw from "rehype-raw";
+
+const Markdown = lazy(() => import("react-markdown"));
 
 export const FullPost: FC = () => {
   const { id } = useParams();
@@ -36,6 +39,10 @@ export const FullPost: FC = () => {
 
           <span className={styles.date}>{formattedDate}</span>
         </div>
+
+        <Markdown rehypePlugins={[rehypeRaw]} className={styles.markdown}>
+          {post.content}
+        </Markdown>
       </div>
     </div>
   );

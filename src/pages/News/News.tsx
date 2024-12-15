@@ -83,9 +83,9 @@ export const News: FC = () => {
       .filter((post) => {
         if (selectedType === POST_TYPES.SUGGESTED) {
           return post.type === "suggested";
+        } else {
+          return post.type === "academy";
         }
-
-        return true;
       });
   }, [data?.data.posts, selectedTags, selectedType]);
 

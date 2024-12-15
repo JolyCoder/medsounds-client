@@ -3,11 +3,15 @@
   flex-direction: column;
   align-items: center;
 
-  padding: 41px 13% 35px 13%;
+  padding: 41px 22% 35px 22%;
 
   width: 100%;
 
   overflow: auto;
+}
+
+.container {
+  box-sizing: border-box;
 }
 
 .content {
@@ -18,7 +22,7 @@
 
   gap: 21px;
 
-  width: 1045px;
+  width: 100%;
 }
 
 .header {
@@ -32,6 +36,7 @@
 }
 
 .imageContainer {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 
@@ -42,9 +47,13 @@
   gap: 23px;
 
   background-color: #f5f5f5;
+
+  width: 100%;
 }
 
 .image {
+  box-sizing: border-box;
+
   border-radius: 12px;
 
   width: 100%;
@@ -66,4 +75,10 @@
   line-height: 20px;
 
   color: #3e3232bf;
+}
+
+.markdown {
+  width: 100%;
+
+  color: black;
 }
