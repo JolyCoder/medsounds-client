@@ -88,7 +88,7 @@ export const News: FC = () => {
 
   const handleClickOnPost = (postId: string) => postId;
 
-  const lastPost = data?.data.posts[2];
+  const lastPost = data?.data.posts[0];
 
   if (!lastPost) {
     return null;

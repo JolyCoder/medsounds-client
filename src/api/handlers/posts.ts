@@ -33,12 +33,10 @@ function toggleLikeOnPost({ postId }: ToogleLikeOnPostInput) {
   );
 }
 
-type GetBestPostResponse = {
-  post: Post;
-};
+type GetBestPostResponse = Post;
 
 function getBestPost() {
-  return apiClient.makeRequest<GetBestPostResponse>("/");
+  return apiClient.makeRequest<GetBestPostResponse>("/posts/top");
 }
 
 export const postsApi = {

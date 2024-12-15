@@ -6,9 +6,9 @@ import styles from "./BestPost.module.css";
 import { Post } from "../Post/Post";
 
 export const BestPost: FC = () => {
-  const { data } = useQuery(...postsApi.getPosts());
+  const { data } = useQuery(...postsApi.getBestPost());
 
-  const post = data?.data.posts[2];
+  const post = data?.data;
 
   if (!post) {
     return null;
