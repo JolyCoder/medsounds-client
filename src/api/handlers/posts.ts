@@ -29,7 +29,8 @@ type ToggleLikeOnPostResponse = string;
 
 function toggleLikeOnPost({ postId }: ToogleLikeOnPostInput) {
   return apiClient.makeRequest<ToggleLikeOnPostResponse>(
-    `/posts/${postId}/like-unlike`
+    `/posts/${postId}/like-unlike/`,
+    { method: "POST" }
   );
 }
 

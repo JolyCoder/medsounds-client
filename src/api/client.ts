@@ -15,6 +15,8 @@ class APIClient {
   async makeRequest<T>(input: RequestInfo | URL, init?: RequestInit) {
     const preparedFetchParams = this.prepareFetchParams(input, init);
 
+    console.log(preparedFetchParams);
+
     const res = await fetch(
       preparedFetchParams.input,
       preparedFetchParams.init
