@@ -79,7 +79,7 @@ export const News: FC = () => {
       })
       .filter((post) => {
         if (selectedType === POST_TYPES.SUGGESTED) {
-          return post.suggested;
+          return post.type === "suggested";
         }
 
         return true;
