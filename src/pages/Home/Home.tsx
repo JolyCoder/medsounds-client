@@ -4,6 +4,8 @@ import { useQuery } from "react-query";
 import { podcastsApi } from "../../api";
 import { AudioPlayer } from "../../components/AudioPlayer/AudioPlayer";
 
+import styles from "./Home.module.css";
+
 export const Home: FC = () => {
   const [selectedPodcastId, setSelectedPodcastId] = useState<number>();
 
@@ -15,20 +17,31 @@ export const Home: FC = () => {
     }
   }, [data?.data.podcasts, selectedPodcastId]);
 
-  const podcast = useMemo(() => {
+  const selectedPodcast = useMemo(() => {
     return data?.data.podcasts.find(({ id }) => id === selectedPodcastId);
   }, [data?.data.podcasts, selectedPodcastId]);
 
-  if (!podcast) {
+  if (!selectedPodcast) {
     return null;
   }
 
   return (
-    <AudioPlayer
-      imageSrc={podcast.image}
-      audioSrc={podcast.podcast}
-      name={podcast.title}
-      author={"Kulov huesos"}
-    />
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <div className={styles.header}>
+          <span className={styles.title}>
+            <span className={styles.coloredTitleWord}>Звуки</span> медицины
+          </span>
+
+          <AudioPlayer
+            audioSrc={selectedPodcast.podcast}
+            imageSrc={selectedPodcast.image}
+            name={selectedPodcast.title}
+            author={selectedPodcast.author}
+            className={styles.player}
+          />
+        </div>
+      </div>
+    </div>
   );
 };

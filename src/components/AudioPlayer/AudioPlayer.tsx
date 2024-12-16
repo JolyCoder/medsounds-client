@@ -1,7 +1,10 @@
 import { type FC } from "react";
 import { useAudio } from "react-use";
 
+import cn from "classnames";
+
 import styles from "./AudioPlayer.module.css";
+
 import { PlayerBack } from "../../icons/PlayerBack";
 import { PlayerRange } from "./components/PlayerRange/PlayerRange";
 import { PlayerForward } from "../../icons/PlayerForward";
@@ -16,6 +19,7 @@ type AudioPlayerProps = {
   imageSrc: string;
   name: string;
   author: string;
+  className?: string;
 };
 
 export const AudioPlayer: FC<AudioPlayerProps> = ({
@@ -23,6 +27,7 @@ export const AudioPlayer: FC<AudioPlayerProps> = ({
   author,
   imageSrc,
   name,
+  className,
 }) => {
   const [audio, state, controls] = useAudio({
     src: audioSrc,
@@ -54,7 +59,7 @@ export const AudioPlayer: FC<AudioPlayerProps> = ({
     <>
       {audio}
 
-      <div className={styles.container}>
+      <div className={cn(styles.container, className)}>
         {!isLoaded ? (
           <Spinner color="white" />
         ) : (

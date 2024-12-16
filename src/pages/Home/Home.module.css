@@ -1,39 +1,48 @@
 .container {
   display: flex;
   flex-direction: column;
-
   align-items: center;
-  gap: 39px;
+
+  padding: 41px 13% 35px 13%;
 
   width: 100%;
-  padding: 60px 87px;
+
+  overflow: auto;
 }
 
-.comeSoonContainer {
+.content {
   display: flex;
   flex-direction: column;
 
   align-items: center;
-  justify-content: center;
 
-  gap: 13px;
-
-  flex-grow: 1;
-  border-radius: 20px;
-  background-color: #d1d1e9;
-
-  padding: 0px 19%;
+  width: 1045px;
 }
 
-.comeSoonText {
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 72px;
+.header {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 28px;
+
+  width: 100%;
+}
+
+.player {
+  margin-top: 17px;
+}
+
+.title {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 76.8px;
   text-align: center;
 
-  color: #000000;
+  color: black;
 }
 
-.comeSoonLowerText {
-  margin-top: 19px;
+.coloredTitleWord {
+  color: #6246ea;
 }

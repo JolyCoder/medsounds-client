@@ -5,6 +5,7 @@ type Podcast = {
   id: number;
   title: string;
   description: string;
+  author: string;
   duration: number;
   likes: number;
   auditions: number;
