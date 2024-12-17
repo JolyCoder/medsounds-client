@@ -13,6 +13,7 @@ type Podcast = {
   liked: boolean;
   image: string; // URL
   podcast: string;
+  created_at: number;
 };
 
 type GetPodcastsResponse = {
@@ -23,6 +24,20 @@ const getPodcasts = () => {
   return apiClient.makeRequest<GetPodcastsResponse>("/podcasts");
 };
 
+type ToogleLikeOnPodcastInput = {
+  podcastId: string;
+};
+
+type ToggleLikeOnPodcastResponse = string;
+
+function toggleLikeOnPodcast({ podcastId }: ToogleLikeOnPodcastInput) {
+  return apiClient.makeRequest<ToggleLikeOnPodcastResponse>(
+    `/podcasts/${podcastId}/like-unlike/`,
+    { method: "POST" }
+  );
+}
+
 export const podcastsApi = {
   getPodcasts: createHandler(getPodcasts),
+  toggleLikeOnPodcast: createHandler(toggleLikeOnPodcast),
 };

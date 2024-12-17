@@ -16,7 +16,9 @@
 
   align-items: center;
 
-  width: 1045px;
+  width: 854px;
+
+  gap: 87px;
 }
 
 .header {
@@ -45,4 +47,85 @@
 
 .coloredTitleWord {
   color: #6246ea;
+}
+
+.metaContainer {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 42px;
+
+  width: 100%;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+.metaText {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32.69px;
+  text-align: right;
+
+  color: #999999;
+}
+
+.podcastListContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 27px;
+
+  width: 100%;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-end;
+
+  gap: 31px;
+
+  width: 100%;
+}
+
+.tagsTitle {
+  font-size: 31px;
+  font-weight: 900;
+  line-height: 37px;
+  text-align: left;
+
+  color: #2b2c34;
+}
+
+.listTitle {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 43.58px;
+  text-align: left;
+
+  color: #000000;
+
+  width: 100%;
+}
+
+.list {
+  margin-top: 46px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 72px;
+
+  width: 100%;
 }
