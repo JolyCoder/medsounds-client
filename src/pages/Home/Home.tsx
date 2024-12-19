@@ -22,9 +22,19 @@ export const Home: FC = () => {
   const { data, refetch: refetchPodcasts } = useQuery(
     ...podcastsApi.getPodcasts()
   );
-  const likePostMutation = useMutation(...podcastsApi.toggleLikeOnPodcast(), {
-    onSettled: () => refetchPodcasts(),
-  });
+  const likePodcastMutation = useMutation(
+    ...podcastsApi.toggleLikeOnPodcast(),
+    {
+      onSettled: () => refetchPodcasts(),
+    }
+  );
+
+  const increaseAuditionsMutation = useMutation(
+    ...podcastsApi.increaseAuditionsOnPodcast(),
+    {
+      onSettled: () => refetchPodcasts(),
+    }
+  );
 
   const [selectedPodcastId, setSelectedPodcastId] = useState<number>();
 
@@ -86,9 +96,12 @@ export const Home: FC = () => {
   };
 
   const handleLikePodcast = (podcastId: number) =>
-    likePostMutation.mutate({
+    likePodcastMutation.mutate({
       podcastId: podcastId.toString(),
     });
+
+  const handlePodcastListened = (podcastId: number) =>
+    increaseAuditionsMutation.mutate({ podcast_id: podcastId });
 
   if (!selectedPodcast || !selectedPodcastId) {
     return null;
@@ -107,6 +120,7 @@ export const Home: FC = () => {
             imageSrc={selectedPodcast.image}
             name={selectedPodcast.title}
             author={selectedPodcast.author}
+            onListened={() => handlePodcastListened(selectedPodcastId)}
             className={styles.player}
           />
 

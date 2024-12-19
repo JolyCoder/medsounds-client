@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { useState, useEffect, type FC } from "react";
 import { useAudio } from "react-use";
 
 import cn from "classnames";
@@ -19,6 +19,7 @@ type AudioPlayerProps = {
   imageSrc: string;
   name: string;
   author: string;
+  onListened: () => void;
   className?: string;
 };
 
@@ -27,12 +28,22 @@ export const AudioPlayer: FC<AudioPlayerProps> = ({
   author,
   imageSrc,
   name,
+  onListened,
   className,
 }) => {
+  const [listened, setListened] = useState<boolean>(false);
+
   const [audio, state, controls] = useAudio({
     src: audioSrc,
-    autoPlay: true,
+    autoPlay: false,
   });
+
+  useEffect(() => {
+    if (state.playing && !listened) {
+      onListened();
+      setListened(true);
+    }
+  }, [listened, onListened, state.playing]);
 
   const handleBackSeekClick = () => {
     controls.seek(state.time - SEEK_RANGE);

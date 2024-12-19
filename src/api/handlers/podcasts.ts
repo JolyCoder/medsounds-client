@@ -37,7 +37,23 @@ function toggleLikeOnPodcast({ podcastId }: ToogleLikeOnPodcastInput) {
   );
 }
 
+type IncreaseAuditionsOnPodcastInput = {
+  podcast_id: number;
+};
+
+type IncreaseAuditionsOnPodcastReponse = string;
+
+function increaseAuditionsOnPodcast({
+  podcast_id,
+}: IncreaseAuditionsOnPodcastInput) {
+  return apiClient.makeRequest<IncreaseAuditionsOnPodcastReponse>(
+    `/podcasts/${podcast_id}/auditions`,
+    { method: "POST" }
+  );
+}
+
 export const podcastsApi = {
   getPodcasts: createHandler(getPodcasts),
   toggleLikeOnPodcast: createHandler(toggleLikeOnPodcast),
+  increaseAuditionsOnPodcast: createHandler(increaseAuditionsOnPodcast),
 };
