@@ -3,7 +3,6 @@ import { Outlet, useLocation, useNavigate } from "react-router";
 import styles from "./App.module.css";
 import { Header } from "./components/Header/Header";
 import { AppSuspense } from "./components/AppSuspense/AppSuspense";
-import { PATHS } from "./consts";
 import { useEffect } from "react";
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!Object.values(PATHS).includes(location.pathname)) {
+    if (location.pathname === "/") {
       navigate("/home");
     }
   }, [location.pathname, navigate]);

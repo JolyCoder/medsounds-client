@@ -18,6 +18,7 @@ export const BestPost: FC = () => {
   }
 
   const handleClick = () => {
+    console.log(`/news/${post.post_id}`);
     navigate(`/news/${post.post_id}`);
   };
 
