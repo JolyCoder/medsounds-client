@@ -9,6 +9,7 @@ import { Auditions } from "../../icons/Audtions";
 import { LikesCount } from "../../icons/LikesCount";
 import { TagSelector } from "../../components/TagSelector/TagSelector";
 import { PodcastItem } from "../../components/PodcastItem/PodcastItem";
+import { PagePlaceholder } from "../../components/PagePlaceholder/PagePlaceholder";
 
 const LAST_SORT_TITLE = "Последнее";
 const POPULAR_SORT_TITLE = "Популярное";
@@ -104,7 +105,7 @@ export const Home: FC = () => {
     increaseAuditionsMutation.mutate({ podcast_id: podcastId });
 
   if (!selectedPodcast || !selectedPodcastId) {
-    return null;
+    return <PagePlaceholder />;
   }
 
   return (

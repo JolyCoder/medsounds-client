@@ -8,6 +8,7 @@ import styles from "./News.module.css";
 import { TagSelector } from "../../components/TagSelector/TagSelector";
 import { SuggestButton } from "../../components/SuggestButton/SuggestButton";
 import { useNavigate } from "react-router";
+import { PagePlaceholder } from "../../components/PagePlaceholder/PagePlaceholder";
 
 const POST_TYPES = { ACADEMY: "Записи академии", SUGGESTED: "Предложенные" };
 const POST_WODRDS = ["новость", "новости", "новостей"];
@@ -93,8 +94,8 @@ export const News: FC = () => {
 
   const lastPost = data?.data.posts[0];
 
-  if (!lastPost) {
-    return null;
+  if (!lastPost || !data.data.posts.length) {
+    return <PagePlaceholder />;
   }
 
   return (
